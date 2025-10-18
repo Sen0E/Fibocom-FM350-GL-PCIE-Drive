@@ -1,0 +1,121 @@
+; ----------------------------------------------------------------------------
+; UMDF 2.x GNSS Driver 
+; IntelGNSSDriver.inf
+;
+; Copyright (C) 2016-2017 Intel Deutschland GmbH
+;
+; Sec Class: Intel Confidential (IC)
+; ----------------------------------------------------------------------------
+
+[Version]
+Signature="$Windows NT$"
+Class=Sensor
+ClassGuid={5175D334-C371-4806-B3BA-71FD53C9258D}
+Provider=%ManufacturerName%
+CatalogFile=IntelGNSSDriver.cat
+DriverVer =06/01/2022,4.19042.6.6
+PnpLockDown=1
+
+[Manufacturer]
+%ManufacturerName%=Intel,NTamd64
+
+[Intel.NTamd64]
+%DeviceName5G%=GnssM2DeviceNA5G_Install, PCI\VID_8087&PID_0B5E       ; M.2 M80
+
+[SourceDisksFiles]
+IntelGNSSDriver.dll=1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+; =================== UMDF Device ==================================
+
+[GnssM2DeviceCA4G_Install.NT]
+CopyFiles=UMDriverCopy
+Include=WINUSB.INF                      ; Import sections from WINUSB.INF
+Needs=WINUSB.NT                         ; Run the CopyFiles & AddReg directives for WinUsb.INF
+
+[GnssM2DeviceNA5G_Install.NT]
+CopyFiles=UMDriverCopy
+
+[GnssM2DeviceCA4G_Install.NT.hw]
+AddReg=GNSSDriverCA4G_AddReg
+[GnssM2DeviceNA5G_Install.NT.hw]
+AddReg=GNSSDriverNA5G_AddReg
+
+[GnssM2DeviceCA4G_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall  ; flag 0x2 sets this as the service for the device
+AddService=WinUsb,0x000001f8,WinUsb_ServiceInstall  ; this service is installed because its a filter.
+
+[GnssM2DeviceNA5G_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall  ; flag 0x2 sets this as the service for the device
+
+[GnssM2DeviceCA4G_Install.NT.Wdf]
+UmdfDispatcher=WinUsb
+UmdfService=GNSSDriver,GNSSDriver_Install
+UmdfServiceOrder=GNSSDriver
+UmdfHostProcessSharing=ProcessSharingDisabled
+
+[GnssM2DeviceNA5G_Install.NT.Wdf]
+UmdfService=GNSSDriver,GNSSDriver_Install
+UmdfServiceOrder=GNSSDriver
+UmdfHostProcessSharing=ProcessSharingDisabled
+UmdfKernelModeClientPolicy  = AllowKernelModeClients
+UmdfFileObjectPolicy        = AllowNullAndUnknownFileObjects
+UmdfFsContextUsePolicy      = CannotUseFsContexts
+
+[GNSSDriver_Install]
+UmdfLibraryVersion=2.15.0 
+ServiceBinary=%12%\UMDF\IntelGNSSDriver.dll
+
+[GNSSDriverCA4G_AddReg]
+; By default, USBDevice class uses iProduct descriptor to name the device in
+; Device Manager on Windows 8 and higher.
+; Uncomment for this device to use %DeviceName% on Windows 8 and higher:
+HKR,,FriendlyName,,%DeviceName4G%
+HKR,,"LowerFilters",0x00010008,"WinUsb" ; FLG_ADDREG_TYPE_MULTI_SZ | FLG_ADDREG_APPEND
+HKR,,"WinUsbPowerPolicyOwnershipDisabled",0x00010001,1
+HKR,"WDF","WdfDirectedPowerTransitionEnable",0x00010001,1
+HKR,,InterfaceType,0x10001,2            ; 1=>NA_M80, 2=>CA_L850, 3=>CA_M80 (Internal Test Only, Can be removed before PV)
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;UD)" ;Allow generic all access to System, built-in Admin and UMDF drivers.
+
+[GNSSDriverNA5G_AddReg]
+; By default, USBDevice class uses iProduct descriptor to name the device in
+; Device Manager on Windows 8 and higher.
+; Uncomment for this device to use %DeviceName% on Windows 8 and higher:
+HKR,,FriendlyName,,%DeviceName5G%
+HKR,"WDF","WdfDirectedPowerTransitionEnable",0x00010001,1
+HKR,,InterfaceType,0x10001,1            ; 1=>NA_M80, 2=>CA_L850, 3=>CA_M80 (Internal Test Only, Can be removed before PV)
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;UD)" ;Allow generic all access to System, built-in Admin and UMDF drivers.
+
+[WUDFRD_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType = 1
+StartType = 3
+ErrorControl = 1
+ServiceBinary = %12%\WUDFRd.sys
+
+[WinUsb_ServiceInstall]
+DisplayName = %WinUsb_SvcDesc%
+ServiceType = 1
+StartType = 3
+ErrorControl = 1
+ServiceBinary = %12%\WinUSB.sys
+
+[DestinationDirs]
+UMDriverCopy=12,UMDF ; copy to drivers\umdf
+
+[UMDriverCopy]
+IntelGNSSDriver.dll
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Intel" ;TODO: Replace with your manufacturer name
+;ClassName="GPS"
+DiskName = "GNSSDriver Installation Disk"
+WudfRdDisplayName="GNSS"
+WinUsb_SvcDesc="WinUSB Driver"
+DeviceName4G="M2.Location.GNSS"
+DeviceName5G="Intel 5G Solution 5000 GNSS Sensor"
+REG_MULTI_SZ = 0x00010000

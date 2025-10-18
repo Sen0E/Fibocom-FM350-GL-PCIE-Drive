@@ -1,0 +1,548 @@
+;------------------------------------------------------------------------------
+; INTEL CONFIDENTIAL Copyright 2019-2021 Intel Corporation All Rights Reserved.
+;
+; The source code contained or described herein and all documents related to
+; the source code ("Material") are owned by Intel Corporation or its suppliers
+; or licensors. Title to the Material remains with Intel Corporation or its
+; suppliers and licensors. The Material contains trade secrets and proprietary
+; and confidential information of Intel or its suppliers and licensors.
+; The Material is protected by worldwide copyright and trade secret laws and
+; treaty provisions. No part of the Material may be used, copied, reproduced,
+; modified, published, uploaded, posted, transmitted, distributed,
+; or disclosed in any way without Intel's prior express written permission.
+
+; No license under any patent, copyright, trade secret or other intellectual
+; property right is granted to or conferred upon you by disclosure or
+; delivery of the Materials, either expressly, by implication, inducement,
+; estoppel or otherwise. Any license under such intellectual property rights
+; must be express and approved by Intel in writing.
+;------------------------------------------------------------------------------
+
+;------------------------------------------------------------------------------
+; WwanNet.INF
+;
+; Intel(R) Wwan 5G NetAdapter Stack
+; Installation Script for Windows 64 bit
+;
+;------------------------------------------------------------------------------
+
+
+
+;------------------------------------------------------------------------------
+; Version Section
+;------------------------------------------------------------------------------
+[Version]
+Signature               = "$WINDOWS NT$"
+Class                   = Net
+ClassGUID               = {4d36e972-e325-11ce-bfc1-08002be10318}
+PnpLockDown             = 1
+Provider                = %ManufacturerName%
+CatalogFile             = WwanNet.cat
+DriverVer =06/16/2022,0.6.200.233
+
+;------------------------------------------------------------------------------
+; Manufacturer
+;------------------------------------------------------------------------------
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+;------------------------------------------------------------------------------
+;Device
+;------------------------------------------------------------------------------
+[Standard.NTamd64]
+%WwanNet.DeviceDesc%=WwanNet_Device, PCI\VEN_14C3&DEV_4D75
+%WwanNet.DeviceDesc%=WwanNet_Device, PCI\VEN_14C3&DEV_4D75&SUBSYS_35021CF8
+%WwanNet.DeviceDesc%=WwanNet_Device, PCI\VEN_14C3&DEV_4D75&SUBSYS_35051CF8
+
+;------------------------------------------------------------------------------
+;INSTALL WINT_64
+;------------------------------------------------------------------------------
+[WwanNet_Device.NT]
+CopyFiles=Drivers_Dir,Drivers_Dir_Umdf,Service_Dir
+CopyINF=WwanComDriver.inf
+;
+FeatureScore            = 0xFE
+Characteristics         = 0x04  ; NCF_PHYSICAL
+BusType                 = 5     ; PCIBus
+*IfType                 = 243   ; IF_TYPE_WWANPP
+*MediaType              = 9     ; NdisMediumWirelessWan
+*PhysicalMediaType      = 8     ; NdisPhysicalMediumWirelessWan
+*IfConnectorPresent     = 1     ; true
+*ConnectionType         = 1     ; NET_IF_CONNECTION_DEDICATED
+*DirectionType          = 0     ; NET_IF_DIRECTION_SENDRECEIVE
+*AccessType             = 2     ; NET_IF_ACCESS_BROADCAST
+*HardwareLoopback       = 0     ; false
+NumberOfNetworkInterfaces = 11  ; how many network interfaces the NIC supports
+EnableDhcp              = 0;    ; Disable DHCP -  does not implement DHCP server spoofing
+;
+AddReg                  = ndi.reg
+AddReg                  = wwanfeatures.staticparams.reg
+
+;------------------------------------------------------------------------------
+; AddReg section for each Advanced Keyword
+; These leys go into 'The device's software key'
+;------------------------------------------------------------------------------
+;
+AddReg                  = SelectiveSuspend.kw ; Only needed for 19042 OS. For later OS remove!
+AddReg                  = DeviceSleepOnDisconnect.kw
+AddReg                  = WakeOnMagicPacket.kw
+;AddReg                  = ModernStandyWoLMagicPacket.kw
+
+;
+;AddReg                  = OffloadChecksum.kw
+
+;
+;
+;AddReg                  = RSS.kw
+;AddReg                  = LSO.kw
+;AddReg                  = USO.kw
+
+
+;------------------------------------------------------------------------------
+; Device feature registry entries
+; Format: reg-root, [subkey],[value-entry-name],[flags],[value][,[value]]
+;------------------------------------------------------------------------------
+[wwanfeatures.staticparams.reg]
+;
+HKR,, WWANCIDBufferPortConfig, %RegTypeDW%, 0
+HKR,, WWANCIDBufferTRACE,      %RegTypeDW%, 1
+HKR,, WWANCDConfig,            %RegTypeDW%, 0
+HKR,, WWANMiniConfig,          %RegTypeDW%, 0
+;
+HKR,, WwanMbimVersionDowngrade, %RegTypeDW%, 0
+
+;
+; These need to be removed eventually !!!
+HKR,, WWANFeatureGNSS,    %RegTypeDW%, 1
+HKR,, WWANFeatureAT,      %RegTypeDW%, 1
+HKR,, WWANFeatureCD,      %RegTypeDW%, 0
+HKR,, WWANFeatureMDLOG,   %RegTypeDW%, 0
+HKR,, WWANFeatureSAPLOG,  %RegTypeDW%, 0
+HKR,, WWANFeatureADB,     %RegTypeDW%, 0
+HKR,, WWANFeatureMETASAP, %RegTypeDW%, 0
+HKR,, WWANFeatureMETAMD,  %RegTypeDW%, 0
+HKR,, WWANFeatureNPT,     %RegTypeDW%, 0
+HKR,, WWANFeatureFLASH,   %RegTypeDW%, 0
+HKR,, WWANFeatureNMEA,    %RegTypeDW%, 0
+;
+
+;------------------------------------------------------------------------------
+; Binding
+; Note that "ndis5" simply means to bind to TCPIP; it is not a version number
+;------------------------------------------------------------------------------
+[ndi.reg]
+HKR, Ndi\Interfaces,    UpperRange, 0, "flpp4, flpp6"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ppip"
+HKR, Ndi,               Service,    0, %WwanNet.ServiceName%
+
+;------------------------------------------------------------------------------
+; HW capabilities Registry entries
+;------------------------------------------------------------------------------
+[WwanNet_Device.NT.HW]
+Include = machine.inf
+Needs   = PciD3ColdSupported.HW
+Addreg  = WwanNet_HWReg_POWER
+;Addreg  = WwanNet_HWReg.security
+Addreg  = WwanNet_HWReg_Msix_COMMON
+Addreg  = WwanNet_HWReg_Msix_VECTORS
+Addreg  = WwanNet_HWReg_Msix_AFFINITY
+AddReg  = WwanMControl_AddReg
+AddReg = MASvc_AutoLogger_AddReg ;MA service WMI
+
+[MASvc_AutoLogger_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, LogFileMode, %RegTypeDW%, 0x10000002 ;FILE_MODE_CIRCULAR,EVENT_TRACE_NO_PER_PROCESSOR_BUFFERING
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, BufferSize, %RegTypeDW%, 0x00000004 ;4kb
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, MaxFileSize, %RegTypeDW%, 0x0000000A ;10MB
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, FileMax, %RegTypeDW%, 0x00000005 ;5 files
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, FlushTimer, %RegTypeDW%, 0x00000001 ;1s
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, Guid,, "{6d6454c6-b39d-4099-857b-c9584cf871a8}" ;same define in ServiceDebug.cpp
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, MaximumBuffers, %RegTypeDW%, 0x00000004 ;4kb
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, MinimumBuffers, %RegTypeDW%, 0x00000004 ;4kb
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, ClockType, %RegTypeDW%, 0x00000001 ;Performance counter value (high resolution)
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5, Start, %RegTypeDW%, 0 ;set to 0, waiting for flash service startup
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5\{5841FE28-A157-4B24-8A9A-AF147E8E998E}, Enabled, %RegTypeDW%, 00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5\{5841FE28-A157-4B24-8A9A-AF147E8E998E}, EnableFlags,%RegTypeDW%, 0xFFFFFFFF
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanMASvc5\{5841FE28-A157-4B24-8A9A-AF147E8E998E}, EnableLevel, %RegTypeDW%, 00000005
+
+[WwanNet_HWReg_POWER]
+;HKR, PWR, BaseLowPowerD2, %RegTypeDW%, 0
+HKR,"WDF","WdfDirectedPowerTransitionEnable",0x00010001,1
+
+[WwanNet_HWReg_Msix_COMMON]
+HKR, Interrupt Management, , 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties,,0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties,MSISupported,%RegTypeDW%,1
+[WwanNet_HWReg_Msix_VECTORS]
+HKR, Interrupt Management\MessageSignaledInterruptProperties,MessageNumberLimit,%RegTypeDW%,32
+;HKR, Interrupt Management\MessageSignaledInterruptProperties,MessageNumberLimit,%RegTypeDW%,1
+[WwanNet_HWReg_Msix_AFFINITY] ;system makes registry settings available to driver during IRP_MN_FILTER_RESOURCE_REQUIREMENTS
+HKR, "Interrupt Management\Affinity Policy", DevicePolicy, %RegTypeDW%, 5
+;HKR, "Interrupt Management\Affinity Policy", AssignmentSetOverride, 0x00000001, 05,00,00,00,00,00,00,00 ;little-endian
+
+
+;[WwanNet_HWReg.security]
+;"%WwanNet.BASY_ALL_REG_KEY%"
+
+[WwanMControl_AddReg]
+HKR,,,,%ClassName%
+HKR,,Icon,,"-10"
+HKR, DSSA,SimSlotCount,0x00010001,00000001
+;
+HKR,,"LowerFilters",0x00010008,"WUDFRd"      ; 0x00010008 - FLG_ADDREG_TYPE_MULTI_SZ | FLG_ADDREG_APPEND
+;
+HKR,,Security,,"D:P(A;;GA;;;WD)(A;;GA;;;BU)(A;;GA;;;BA)(A;;GA;;;SY)(A;;GA;;;LS)(A;;GA;;;WD)(A;;GA;;;UD)"
+;
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, ClockType, %RegTypeDW%, 1
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, FileName, %RegTypeStr%, "%%SystemRoot%%\System32\LogFiles\WMI\WwanNetTrc.etl"
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, GUID, %RegTypeStr%, "{bd1b50d9-c45f-42f1-88cd-de0505337737}"
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, LogFileMode, %RegTypeDW%, 0x10000002
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, MaxFileSize, %RegTypeDW%, 0x00000100
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, Start, %RegTypeDW%, 00000001
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, Status, %RegTypeDW%, 00000000
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, FileMax, %RegTypeDW%, 00000005
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, FileCounter, %RegTypeDW%, 00000000
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, FlushTimer, %RegTypeDW%, 00000025
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, MinimumBuffers, %RegTypeDW%, 100
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, MaximumBuffers, %RegTypeDW%, 200
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet, BufferSize, %RegTypeDW%, 512
+;
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{559A12EF-652B-4091-9DCF-10847B122342}, Enabled, %RegTypeDW%, 00000001
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{559A12EF-652B-4091-9DCF-10847B122342}, EnableFlags, %RegTypeDW%, 0x0000ffff
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{559A12EF-652B-4091-9DCF-10847B122342}, EnableLevel, %RegTypeDW%, 00000005
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{64EEA13C-0080-40AF-82B2-7E6E2DCA1768}, Enabled, %RegTypeDW%, 00000001
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{64EEA13C-0080-40AF-82B2-7E6E2DCA1768}, EnableFlags, %RegTypeDW%, 0x0000ffff
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{64EEA13C-0080-40AF-82B2-7E6E2DCA1768}, EnableLevel, %RegTypeDW%, 00000005
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{42128a27-f0c5-4d75-84b3-6c28d8e5312c}, Enabled, %RegTypeDW%, 00000001
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{42128a27-f0c5-4d75-84b3-6c28d8e5312c}, EnableFlags, %RegTypeDW%, 0x0000ffff
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{42128a27-f0c5-4d75-84b3-6c28d8e5312c}, EnableLevel, %RegTypeDW%, 00000005
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{6bbc88a0-a009-4521-a86c-b1bd9a4e57ed}, Enabled, %RegTypeDW%, 00000001
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{6bbc88a0-a009-4521-a86c-b1bd9a4e57ed}, EnableFlags, %RegTypeDW%, 0x0000ffff
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\WwanNet\{6bbc88a0-a009-4521-a86c-b1bd9a4e57ed}, EnableLevel, %RegTypeDW%, 00000005
+;
+;
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, ClockType, %RegTypeDW%, 1
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, FileName, %RegTypeStr%, "%%SystemRoot%%\System32\LogFiles\WMI\IhvTrc.etl"
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, GUID, %RegTypeStr%, "{7FC3AB12-13B1-4FFE-85D6-BBC968E25497}"
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, LogFileMode, %RegTypeDW%, 0x10000002
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, MaxFileSize, %RegTypeDW%, 00000040
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, Start, %RegTypeDW%, 00000001
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, Status, %RegTypeDW%, 00000000
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, FileMax, %RegTypeDW%, 00000005
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, FileCounter, %RegTypeDW%, 00000000
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, FlushTimer, %RegTypeDW%, 00000025
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, MinimumBuffers, %RegTypeDW%, 40
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, MaximumBuffers, %RegTypeDW%, 200
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv, BufferSize, %RegTypeDW%, 512
+;
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv\{F10521C0-FFA9-4698-A49E-F00DADC2046E}, Enabled, %RegTypeDW%, 00000001
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv\{F10521C0-FFA9-4698-A49E-F00DADC2046E}, EnableFlags, %RegTypeDW%, 0x0000ffff
+HKLM, SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\Ihv\{F10521C0-FFA9-4698-A49E-F00DADC2046E}, EnableLevel, %RegTypeDW%, 00000005
+
+
+;------------------------------------------------------------------------------
+; WDF specific section
+;------------------------------------------------------------------------------
+[WwanNet_Device.NT.Wdf]
+KmdfService                 = %WwanNet.ServiceName%, WwanNet_Install
+UmdfService                 = WwanMControl, WwanMControl_Install
+UmdfServiceOrder            = WwanMControl
+UmdfKernelModeClientPolicy  = AllowKernelModeClients
+UmdfHostProcessSharing      = ProcessSharingDisabled
+UmdfFileObjectPolicy        = AllowNullAndUnknownFileObjects
+UmdfImpersonationLevel      = Impersonation
+;UmdfMethodNeitherAction     = Copy
+;UmdfDispatcher              = FileHandle
+
+[WwanMControl_Install]
+UmdfLibraryVersion         = 2.15.0
+ServiceBinary              = %12%\UMDF\WwanIHVDriver.dll
+
+[WwanNet_Install]
+KmdfLibraryVersion = 1.27
+
+;[WwanNet_Device.NT.CoInstallers]
+;AddReg=CoInstallers_AddReg
+;[CoInstallers_AddReg]
+;HKR,,CoInstallers32,0x00010000,"WUDFCoinstaller.dll"
+
+
+;------------------------------------------------------------------------------
+; Service installation
+;------------------------------------------------------------------------------
+[WwanNet_Device.NT.Services]
+AddService = WUDFRd,0x000001f8,WUDFRD_ServiceInstall
+AddService = %WwanNet.ServiceName%, %SPSVCINST_ASSOCSERVICE%, WwanNet_Service_Inst
+AddService = %MA.SrvName%, 0x00000800, MAService_Inst
+
+[WUDFRD_ServiceInstall]
+DisplayName     = %WudfRdDisplayName%
+ServiceType     = 1
+StartType       = 3
+ErrorControl    = 1
+ServiceBinary   = %12%\WUDFRd.sys
+
+[MAService_Inst]
+DisplayName   = %MA.SrvName%
+Description   = %MA.Description%
+ServiceType   = 0x00000010
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = %11%\IntelWWANModemAuthenticator.exe
+
+[WwanNet_Service_Inst]
+DisplayName    = %WwanNet.DisplayName%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\WwanNet.sys
+LoadOrderGroup = Extended Base
+;AddReg        = WwanNet_Service_Inst.Reg
+
+;[WwanNet_Service_Inst.Reg]
+;HKR,,	BootFlags, 0x00010001, 1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+;[Service.EventLog]
+;AddReg                  = Service.AddEventLog.reg
+;[Service.AddEventLog.reg]
+;HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+;HKR,, TypesSupported,   0x00010001, 7
+;
+
+
+;------------------------------------------------------------------------------
+; DestinationDirs - file copy
+;------------------------------------------------------------------------------
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+WwanNet.sys         = 1,,
+WwanIHVDriver.dll   = 1,,
+WwanConfigurator.dll       = 1,,
+wwanconfig_global_configuration.xml = 1,,
+DecisionMatrix.xml = 1,,
+RegionMappingTable.xml = 1,,
+IntelWWANModemAuthenticator.exe =1,, 
+
+[DestinationDirs]
+Drivers_Dir = 12
+Drivers_Dir_umdf= 12,UMDF ; copy to drivers\umdf
+Service_Dir = 11
+
+[Drivers_Dir]
+WwanNet.sys
+
+[Drivers_Dir_Umdf]
+WwanIHVDriver.dll,,,0x00004000  ; COPYFLG_IN_USE_RENAME
+
+[Service_Dir]
+WwanConfigurator.dll
+wwanconfig_global_configuration.xml
+DecisionMatrix.xml
+RegionMappingTable.xml
+IntelWWANModemAuthenticator.exe
+
+[Service_Dir.security]
+"D:P(A;;GA;;;BA)(A;;GA;;;SY)(A;;GA;;;UD)(A;;GA;;;LS)"
+
+
+;------------------------------------------------------------------------------
+; Advanced Keywords
+; Following registry keys define the Advanced Property Page (NDI) values
+;------------------------------------------------------------------------------
+;
+; MaxNumRssCpus is global - HKEY_LOCAL_MACHINE\\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters
+; Set-NetAdapterRss PowerShell cmdlets operate on a per-Network Adapter basis
+;
+
+;[RSS.kw]
+;HKR,Ndi\params\*RSS,                            ParamDesc,      0,  %RSS%
+;HKR,Ndi\params\*RSS,                            type,           0,  "enum"
+;HKR,Ndi\params\*RSS\enum,                       "0",            0,  %Disabled%
+;HKR,Ndi\params\*RSS\enum,                       "1",            0,  %Enabled%
+;HKR,Ndi\params\*RSS,                            default,        0,  "1"
+
+[SelectiveSuspend.kw]
+HKR,Ndi\params\*SelectiveSuspend,                            ParamDesc,      0,  %SelectiveSuspend%
+HKR,Ndi\params\*SelectiveSuspend,                            type,           0,  "enum"
+HKR,Ndi\params\*SelectiveSuspend\enum,                       "0",            0,  %Disabled%
+HKR,Ndi\params\*SelectiveSuspend\enum,                       "1",            0,  %Enabled%
+HKR,Ndi\params\*SelectiveSuspend,                            default,        0,  "1"
+;
+HKR,Ndi\params\*SSIdleTimeout,                               ParamDesc,      0,  %SSIdleTimeout%
+HKR,Ndi\params\*SSIdleTimeout,                               type,           0,  "int"
+HKR,Ndi\params\*SSIdleTimeout\Min,                           "1",            0,  "1"
+HKR,Ndi\params\*SSIdleTimeout\Max,                           "60",           0,  "60"
+HKR,Ndi\params\*SSIdleTimeout\Step,                          "5",            0,  "5"
+HKR,Ndi\params\*SSIdleTimeout,                               default,        0,  "1"
+;
+HKR,Ndi\params\*SSIdleTimeoutScreenOff,                      ParamDesc,      0,  %SSIdleTimeoutScreenOff%
+HKR,Ndi\params\*SSIdleTimeoutScreenOff,                      type,           0,  "int"
+HKR,Ndi\params\*SSIdleTimeoutScreenOff\Min,                  "1",            0,  "1"
+HKR,Ndi\params\*SSIdleTimeoutScreenOff\Max,                  "5",            0,  "5"
+HKR,Ndi\params\*SSIdleTimeoutScreenOff\Step,                 "1",            0,  "1"
+HKR,Ndi\params\*SSIdleTimeoutScreenOff,                      default,        0,  "1"
+HKR,Ndi\params\*SSIdleTimeoutScreenOff,                      Optional,       0,  "0"
+
+
+[DeviceSleepOnDisconnect.kw]
+HKR,Ndi\params\*DeviceSleepOnDisconnect,      ParamDesc,     0,  %DeviceSleepOnDisconnect%
+HKR,Ndi\params\*DeviceSleepOnDisconnect,      type,          0,  "enum"
+HKR,Ndi\params\*DeviceSleepOnDisconnect\enum, "0",           0,  %Disabled%
+HKR,Ndi\params\*DeviceSleepOnDisconnect\enum, "1",           0,  %Enabled%
+HKR,Ndi\params\*DeviceSleepOnDisconnect,      default,       0,  "1"
+
+
+[WakeOnMagicPacket.kw]
+HKR,Ndi\params\*WakeOnMagicPacket,              ParamDesc,      0,  %WakeOnMagicPkt%
+HKR,Ndi\params\*WakeOnMagicPacket,              type,           0,  "enum"
+HKR,Ndi\params\*WakeOnMagicPacket\enum,         "0",            0,  %Disabled%
+HKR,Ndi\params\*WakeOnMagicPacket\enum,         "1",            0,  %Enabled%
+HKR,Ndi\params\*WakeOnMagicPacket,              default,        0,  "1"
+;
+;[ModernStandyWoLMagicPacket.kw]
+;HKR,Ndi\params\*ModernStandyWoLMagicPacket,      ParamDesc,     0,  %ModernStandyWoLMagicPacket%
+;HKR,Ndi\params\*ModernStandyWoLMagicPacket,      type,          0,  "enum"
+;HKR,Ndi\params\*ModernStandyWoLMagicPacket\enum, "0",           0,  %Disabled%
+;HKR,Ndi\params\*ModernStandyWoLMagicPacket\enum, "1",           0,  %Enabled%
+;HKR,Ndi\params\*ModernStandyWoLMagicPacket,      default,       0,  "0"
+
+
+;[OffloadChecksum.kw]
+;HKR,Ndi\params\*IPChecksumOffloadIPv4,          ParamDesc,      0,  %IPChksumOffv4%
+;HKR,Ndi\params\*IPChecksumOffloadIPv4,          type,           0,  "enum"
+;HKR,Ndi\params\*IPChecksumOffloadIPv4\enum,     "0",            0,  %Disabled%
+;HKR,Ndi\params\*IPChecksumOffloadIPv4\enum,     "1",            0,  %TxEnabled%
+;HKR,Ndi\params\*IPChecksumOffloadIPv4\enum,     "2",            0,  %RxEnabled%
+;HKR,Ndi\params\*IPChecksumOffloadIPv4\enum,     "3",            0,  %RxTxEnabled%
+;HKR,Ndi\params\*IPChecksumOffloadIPv4,          default,        0,  "3"
+;
+;HKR,Ndi\params\*TCPChecksumOffloadIPv4,         ParamDesc,      0,  %TCPChksumOffv4%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv4,         type,           0,  "enum"
+;HKR,Ndi\params\*TCPChecksumOffloadIPv4\enum,    "0",            0,  %Disabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv4\enum,    "1",            0,  %TxEnabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv4\enum,    "2",            0,  %RxEnabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv4\enum,    "3",            0,  %RxTxEnabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv4,         default,        0,  "3"
+;
+;HKR,Ndi\params\*UDPChecksumOffloadIPv4,         ParamDesc,      0,  %UDPChksumOffv4%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv4,         type,           0,  "enum"
+;HKR,Ndi\params\*UDPChecksumOffloadIPv4\enum,    "0",            0,  %Disabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv4\enum,    "1",            0,  %TxEnabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv4\enum,    "2",            0,  %RxEnabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv4\enum,    "3",            0,  %RxTxEnabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv4,         default,        0,  "3"
+;
+;HKR,Ndi\params\*TCPChecksumOffloadIPv6,         ParamDesc,      0,  %TCPChksumOffv6%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv6,         type,           0,  "enum"
+;HKR,Ndi\params\*TCPChecksumOffloadIPv6\enum,    "0",            0,  %Disabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv6\enum,    "1",            0,  %TxEnabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv6\enum,    "2",            0,  %RxEnabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv6\enum,    "3",            0,  %RxTxEnabled%
+;HKR,Ndi\params\*TCPChecksumOffloadIPv6,         default,        0,  "3"
+;
+;HKR,Ndi\params\*UDPChecksumOffloadIPv6,         ParamDesc,      0,  %UDPChksumOffv6%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv6,         type,           0,  "enum"
+;HKR,Ndi\params\*UDPChecksumOffloadIPv6\enum,    "0",            0,  %Disabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv6\enum,    "1",            0,  %TxEnabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv6\enum,    "2",            0,  %RxEnabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv6\enum,    "3",            0,  %RxTxEnabled%
+;HKR,Ndi\params\*UDPChecksumOffloadIPv6,         default,        0,  "3"
+
+;[LSO.kw]
+;HKR,Ndi\Params\*LsoV2IPv4,            ParamDesc,      0,  %LsoV2IPv4%
+;HKR,Ndi\Params\*LsoV2IPv4,            Type,           0,  "enum"
+;HKR,Ndi\Params\*LsoV2IPv4\enum,       "0",            0,  %Disabled%
+;HKR,Ndi\Params\*LsoV2IPv4\enum,       "1",            0,  %Enabled%
+;HKR,Ndi\Params\*LsoV2IPv4,            Default,        0,  "1"
+;
+;HKR,Ndi\Params\*LsoV2IPv6,            ParamDesc,      0,  %LsoV2IPv6%
+;HKR,Ndi\Params\*LsoV2IPv6,            Type,           0,  "enum"
+;HKR,Ndi\Params\*LsoV2IPv6\enum,       "0",            0,  %Disabled%
+;HKR,Ndi\Params\*LsoV2IPv6\enum,       "1",            0,  %Enabled%
+;HKR,Ndi\Params\*LsoV2IPv6,            Default,        0,  "1"
+
+;[USO.kw]
+;HKR,Ndi\Params\*UsoIPv4,            ParamDesc,      0,  %UsoIpv4%
+;HKR,Ndi\Params\*UsoIPv4,            Type,           0,  "enum"
+;HKR,Ndi\Params\*UsoIPv4\enum,       "0",            0,  %Disabled%
+;HKR,Ndi\Params\*UsoIPv4\enum,       "1",            0,  %Enabled%
+;HKR,Ndi\Params\*UsoIPv4,            Default,        0,  "1"
+;
+;HKR,Ndi\Params\*UsoIPv6,            ParamDesc,      0,  %UsoIpv6%
+;HKR,Ndi\Params\*UsoIPv6,            Type,           0,  "enum"
+;HKR,Ndi\Params\*UsoIPv6\enum,       "0",            0,  %Disabled%
+;HKR,Ndi\Params\*UsoIPv6\enum,       "1",            0,  %Enabled%
+;HKR,Ndi\Params\*UsoIPv6,            Default,        0,  "1"
+
+
+;------------------------------------------------------------------------------
+; Strings
+;------------------------------------------------------------------------------
+[Strings]
+SPSVCINST_ASSOCSERVICE      = 0x00000002
+SPSVCSINST_STARTSERVICE     = 0x00000800
+SPSVCINST_CLOBBER_SECURITY  = 0x00000400
+SPSVCINST_OR_START_CLB_SEC  = 0x00000C00
+
+MA.Description = "Intel WWAN Modem Authenticator Service"
+MA.SrvName = "Intel WWAN ModemAuthenticator"
+;
+;
+ManufacturerName            = "Intel"
+DiskName                    = "WWAN(M80) NetAdpater Installation Media"
+;
+RegTypeStr                  = 0x00000000
+RegTypeDW                   = 0x00010001
+;
+SERVICE_ERROR_NORMAL        = 0x00000001
+SERVICE_AUTO_START          = 0x00000002
+SERVICE_DEMAND_START        = 0x00000003
+SERVICE_WIN32_OWN_PROCESS   = 0x00000010
+;
+WwanNet.ServiceName         = "WwanNet(M80)"
+WwanNet.DeviceDesc          = "Intel 5G Solution 5000"
+WwanNet.DisplayName         = "Intel(R) Wwan(T700) NetAdapter Driver"
+;
+WwanNet.BA_RO_REG_KEY       = "D:P(D;;KR;;;BA)"; Restrict Built In Admn to read only
+WwanNet.SY_RO_REG_KEY       = "D:P(D;;KR;;;SY)"; Restrict Sys Acct to read only
+WwanNet.BASY_RO_REG_KEY     = "D:P(D;;KR;;;BA)(D;;KR;;;SY)"; Restrict(Built In Admnand Sys Acct) = RO
+WwanNet.BA_RO_SY_WR_REG_KEY = "D:P(A;;KR;;;BA)(A;;KA;;;SY)"; Restrict Built In Admn = RO, Allow Sys = All
+WwanNet.BASY_ALL_REG_KEY    = "D:P(A;;KA;;;BA)(A;;KA;;;SY)"; Allow(Built In Admnand Sys) = All
+;
+ClassName                   = "WwanMControl"
+WudfRdDisplayName           = "Windows Driver Foundation - User-mode Driver Framework Reflector"
+
+;------------------------------------------------------------------------------
+; Strings - Device Manager Adavnced Property Page
+;------------------------------------------------------------------------------
+Enabled                  = "Enabled"
+Disabled                 = "Disabled"
+;
+IPChksumOffv4            = "IPv4 Checksum Offload"
+TCPChksumOffv4           = "TCP Checksum Offload (IPv4)"
+UDPChksumOffv4           = "UDP Checksum Offload (IPv4)"
+TCPChksumOffv6           = "TCP Checksum Offload (IPv6)"
+UDPChksumOffv6           = "UDP Checksum Offload (IPv6)"
+;
+WakeOnMagicPkt             = "Wake on Magic Packet"
+ModernStandyWoLMagicPacket = "Wake on Magic Packet in S0ix"
+DeviceSleepOnDisconnect    = "Device Sleep On Disconnect"
+;
+RSS                      = "Receive Side Scaling"
+;
+SelectiveSuspend         = "Selective Suspend"
+SSIdleTimeout            = "Selective Suspend Idle Timeout"
+SSIdleTimeoutScreenOff   = "Selective Suspend Idle Timeout ScreenOff"
+;
+LsoV2IPv4                = "TCP Segmentation Offload (Ipv4)"
+LsoV2IPv6                = "TCP Segmentation Offload (Ipv6)"
+UsoIpv4                  = "UDP Segmentation Offload (Ipv4)"
+UsoIpv6                  = "UDP Segmentation Offload (Ipv6)"
+;
+;
+;
+;
+TxEnabled                = "Tx Enabled"
+RxEnabled                = "Rx Enabled"
+RxTxEnabled              = "Rx & Tx Enabled"
+;

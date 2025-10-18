@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This xml consists the global APN entries for the operators which can be added or removed by OEMS. This XML is read-only for IHVRIL and once COSA DB comes this xml will be removed. -->
+<IhvRilConfig>
+	<APNList>
+		<APNDB_Global IccidRangeMin="" IccidRangeMax="" MccMnc="00101" OverRideOSAPN="False">
+			<ConnectionInfoHome IPType="IPV4V6" Source="Modem" AccessString="default" Username="" Password="" Compression="False" Auth="None"></ConnectionInfoHome>
+			<ConnectionInfoPartner IPType="IPV4V6" Source="Modem" AccessString="default" Username="" Password="" Compression="False" Auth="None"></ConnectionInfoPartner>
+			<ConnectionInfoNonPartner IPType="IPV4V6" Source="Modem" AccessString="default" Username="" Password="" Compression="False" Auth="None"></ConnectionInfoNonPartner>
+		</APNDB_Global>
+	</APNList>
+</IhvRilConfig>

@@ -1,0 +1,108 @@
+;
+; WwanComDriver.inf
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=WwanComDriver.cat
+DriverVer =06/16/2022,0.6.200.233
+PnpLockDown=1
+
+[Manufacturer]
+%ManufacturerName%=Microsoft,NTamd64
+
+[Microsoft.NTamd64]
+%DeviceNameAT%=MyDevice_Install, PCI\VID_8087&PID_0B62
+%DeviceNameCD%=MyDevice_Install, PCI\VID_8087&PID_0B61
+%DeviceNameMD%=MyDevice_Install, PCI\VID_8087&PID_0B60
+%DeviceNameADB%=MyDevice_Install, PCI\VID_8087&PID_0B63
+%DeviceNameMETASAP%=MyDevice_Install, PCI\VID_8087&PID_0B64
+%DeviceNameSAP%=MyDevice_Install, PCI\VID_8087&PID_0B5F
+%DeviceNameNPT%=MyDevice_Install, PCI\VID_8087&PID_0B65
+%DeviceNameFLS%=MyDevice_Install, PCI\VID_8087&PID_0B5D
+%DeviceNameNMEA%=MyDevice_Install, PCI\VID_8087&PID_0B66
+%DeviceNameFIBOGNSS%=MyDevice_Install, PCI\VID_8087&PID_0B67
+%DeviceNameMETAMD%=MyDevice_Install, PCI\VID_8087&PID_0B68
+
+[SourceDisksFiles]
+WwanComDriver.dll=1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+; =================== UMDF Device ==================================
+
+[MyDevice_Install.NT]
+CopyFiles=UMDriverCopy
+;
+AddReg=LogSize_AddReg
+
+[MyDevice_Install.NT.hw]
+AddReg=PowerTransition_AddReg
+
+[PowerTransition_AddReg]
+HKR,,"WinUsbPowerPolicyOwnershipDisabled",%RegTypeDW%,1
+HKR,"WDF","WdfDirectedPowerTransitionEnable",%RegTypeDW%,1
+
+[LogSize_AddReg]
+HKR,, "ModemTraceSize", %RegTypeDW%, 64
+HKR,, "FullRAMDumpSize", %RegTypeDW%, 12
+HKR,, "DefaultLogSize", %RegTypeDW%, 3
+
+[MyDevice_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+
+[MyDevice_Install.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+
+[MyDevice_Install.NT.Wdf]
+UmdfService=WwanComDriver,WwanComDriver_Install
+UmdfServiceOrder=WwanComDriver
+UmdfKernelModeClientPolicy  = AllowKernelModeClients
+UmdfFileObjectPolicy        = AllowNullAndUnknownFileObjects
+UmdfFsContextUsePolicy      = CannotUseFsContexts
+
+[WwanComDriver_Install]
+UmdfLibraryVersion=2.15.0
+ServiceBinary=%12%\UMDF\WwanComDriver.dll
+
+[WUDFRD_ServiceInstall]
+DisplayName     = %WudfRdDisplayName%
+ServiceType     = 1
+StartType       = 3
+ErrorControl    = 1
+ServiceBinary   = %12%\WUDFRd.sys
+
+[CoInstallers_AddReg]
+HKR,,DeviceType,0x10001,0x0000001b  ; 0x1b = FILE_DEVICE_SERIAL_PORT
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)(A;;GA;;;UD)"
+
+[DestinationDirs]
+UMDriverCopy=12,UMDF ; copy to drivers\UMDF
+
+[UMDriverCopy]
+WwanComDriver.dll
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Fibocom Wireless Inc." ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "WwanComDriver Installation Disk"
+WudfRdDisplayName="Windows Driver Foundation - User-mode Driver Framework Reflector"
+DeviceNameAT="Intel 5G Solution 5000 COM AT"
+DeviceNameCD="Intel 5G Solution 5000 COM Full RAM Dump"
+DeviceNameMD="Intel 5G Solution 5000 COM MD_Log"
+DeviceNameADB="Intel 5G Solution 5000 COM ADB"
+DeviceNameMETASAP="Intel 5G Solution 5000 COM META SAP"
+DeviceNameSAP="Intel 5G Solution 5000 COM SAP_Log"
+DeviceNameNPT="Intel 5G Solution 5000 COM NPT"
+DeviceNameFLS="Intel 5G Solution 5000 COM FLASH"
+DeviceNameNMEA="Intel 5G Solution 5000 COM NMEA"
+DeviceNameFIBOGNSS="Intel 5G Solution 5000 COM FIBO GNSS"
+DeviceNameMETAMD="Intel 5G Solution 5000 COM META MD"
+;
+RegTypeDW   =   0x00010001

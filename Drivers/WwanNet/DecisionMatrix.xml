@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DecisionMatrix>
+<TempID tempID="00011001b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002300"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002400"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002500"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002300"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002400"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002500"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002300"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002400"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002500"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002300"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002400"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002500"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00001200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00003200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00001200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00003200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00001200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00003200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00004000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00005000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00005200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00005200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00003000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00004000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00005000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00005200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00011001b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00005200"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00003000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00001200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00002200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00003200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00003000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00001200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00002200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00003200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00003000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00003000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00003000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00003000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00003000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00001200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00002200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00011001b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="DIG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00003200"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002011"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002022"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002033"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002044"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002055"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002011"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002022"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002033"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002044"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002055"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002011"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002022"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002033"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002044"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002055"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002011"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002022"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002033"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002044"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11111110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002055"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002001"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002002"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002003"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002004"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002001"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002002"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002003"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002004"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002001"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002002"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002003"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002004"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002001"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002002"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002003"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11010010b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002004"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002010"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002020"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002030"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="01110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002040"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+				<ActionID actionID="0x00001000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+				<ActionID actionID="0x00002000"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+				<ActionID actionID="0x00002010"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+				<ActionID actionID="0x00002020"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+				<ActionID actionID="0x00002030"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+	<TempID tempID="00000110b">
+		<acpiID acpiID="11110110b">
+			<dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+				<ActionID actionID="0x00002040"/>
+			</dptfID>
+		</acpiID>
+	</TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00002010"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00002020"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00002030"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00002040"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00002010"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00002020"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00002030"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11101010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00002040"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00002010"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00002020"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00002030"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="01100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00002040"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT1">
+        <ActionID actionID="0x00001000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT2">
+        <ActionID actionID="0x00002000"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SLIGHT3">
+        <ActionID actionID="0x00002010"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT1">
+        <ActionID actionID="0x00002020"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT2">
+        <ActionID actionID="0x00002030"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+  <TempID tempID="00000110b">
+    <acpiID acpiID="11100010b">
+      <dptfID dptfID="ALG_ACTUATOR_LVL_SIGNIFICANT3">
+        <ActionID actionID="0x00002040"/>
+      </dptfID>
+    </acpiID>
+  </TempID>
+</DecisionMatrix>

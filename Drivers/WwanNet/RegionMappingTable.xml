@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<RegionSwitchTable>
+    <RegionSwitch ver="1.0.0.1">
+        <SelectionRule>		
+			<Region mcc="default" Regulatory="FCC" Country="Generic"/>			
+			<Region mcc="302" Regulatory="FCC" Country="Canada"/>
+			<Region mcc="310" Regulatory="FCC" Country="USA"/>
+			<Region mcc="311" Regulatory="FCC" Country="USA"/>
+			<Region mcc="312" Regulatory="FCC" Country="USA"/>
+			<Region mcc="313" Regulatory="FCC" Country="USA"/>
+			<Region mcc="404" Regulatory="FCC" Country="India"/>
+			<Region mcc="405" Regulatory="FCC" Country="India"/>
+			<Region mcc="460" Regulatory="CE" Country="China"/>
+			<Region mcc="208" Regulatory="CE" Country="French"/>
+			<Region mcc="214" Regulatory="CE" Country="Spain"/>
+			<Region mcc="222" Regulatory="CE" Country="Italy"/>
+			<Region mcc="240" Regulatory="CE" Country="Sweden"/>
+			<Region mcc="262" Regulatory="CE" Country="Germany"/>
+			<Region mcc="232" Regulatory="CE" Country="Austria"/>
+			<Region mcc="206" Regulatory="CE" Country="Belgium"/>
+			<Region mcc="218" Regulatory="CE" Country="Bosnia Herzegovina"/>
+			<Region mcc="284" Regulatory="CE" Country="Bulgaria"/>
+			<Region mcc="219" Regulatory="CE" Country="Croatia"/>
+			<Region mcc="280" Regulatory="CE" Country="Cyprus"/>
+			<Region mcc="230" Regulatory="CE" Country="Czech Republic"/>
+			<Region mcc="238" Regulatory="CE" Country="Denmark"/>
+			<Region mcc="248" Regulatory="CE" Country="Estonia"/>
+			<Region mcc="244" Regulatory="CE" Country="Finland"/>
+			<Region mcc="208" Regulatory="CE" Country="France"/>
+			<Region mcc="742" Regulatory="CE" Country="French Guiana"/>
+			<Region mcc="282" Regulatory="CE" Country="Georgia"/>
+			<Region mcc="266" Regulatory="CE" Country="Gibraltar"/>
+			<Region mcc="202" Regulatory="CE" Country="Greece"/>
+			<Region mcc="225" Regulatory="CE" Country="Holy See (Vatican City)"/>
+			<Region mcc="216" Regulatory="CE" Country="Hungary"/>
+			<Region mcc="272" Regulatory="CE" Country="Ireland"/>
+			<Region mcc="247" Regulatory="CE" Country="Latvia"/>
+			<Region mcc="246" Regulatory="CE" Country="Lithuania"/>
+			<Region mcc="270" Regulatory="CE" Country="Luxembourg"/>
+			<Region mcc="278" Regulatory="CE" Country="Malta"/>
+			<Region mcc="340" Regulatory="CE" Country="Martinique"/>
+			<Region mcc="212" Regulatory="CE" Country="Monaco"/>
+			<Region mcc="297" Regulatory="CE" Country="Montenegro"/>
+			<Region mcc="204" Regulatory="CE" Country="Netherlands"/>
+			<Region mcc="546" Regulatory="CE" Country="New Caledonia"/>
+			<Region mcc="260" Regulatory="CE" Country="Poland"/>
+			<Region mcc="268" Regulatory="CE" Country="Portugal"/>
+			<Region mcc="647" Regulatory="CE" Country="Reunion"/>
+			<Region mcc="226" Regulatory="CE" Country="Romania"/>
+			<Region mcc="292" Regulatory="CE" Country="San Marino"/>
+			<Region mcc="626" Regulatory="CE" Country="Sao Tome Principe"/>
+			<Region mcc="231" Regulatory="CE" Country="Slovakia"/>
+			<Region mcc="293" Regulatory="CE" Country="Slovenia"/>
+			<Region mcc="543" Regulatory="CE" Country="Wallis and Futuna"/>
+        </SelectionRule>
+    </RegionSwitch>
+</RegionSwitchTable>

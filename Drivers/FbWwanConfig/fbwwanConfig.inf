@@ -1,0 +1,98 @@
+﻿;/*++
+;
+;Copyright (c)Fibocom Wireless Inc.  All rights reserved.
+;
+;   THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+;   KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+;   IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+;   PURPOSE.
+;
+;Module Name:
+;
+;    FiboConfigSrvEx.inf
+;
+;Abstract:
+;	To install necessary services for Base device 
+;   
+;
+;--*/
+
+[Version]
+Signature = "$WINDOWS NT$"
+Class = Extension
+ClassGuid = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider = %ManufacturerName%				
+ExtensionId = {936512A7-B1E3-453D-A131-E82B46CD641F}
+CatalogFile = fbwwanConfig.cat
+DriverVer = 11/07/2022,3500.5003.00.19
+
+[Manufacturer]
+%ManufacturerName% = FiboEx, NTAMD64
+
+[FiboEx.NTAMD64]
+%FiboEx.ExtensionDesc%=FiboEx_Inst, MBFW\{72E11E8C-4E85-403D-9574-95A9EB548F2A}
+
+
+[FiboEx_Inst.NT]
+CopyFiles =  ConfigFile_CopyFiles
+
+[FiboEx_Inst.NT.Hw]
+Addreg=FbConfigHWReg
+;AddService=%fbwwanConfig.ServiceName%,%fbwwanConfig.ServiceFlag%,FiboConfig_ServiceInstall
+
+[FbConfigHWReg]
+HKLM,SYSTEM\CurrentControlSet\Control\FbcConfigDriver, Config_Inst, %RegTypeDW%, 1
+;;HKR,,Config_Inst,%RegTypeDW%, 1
+;;HKLM, SOFTWARE\WOW6432Node\Intel\FlashService, Config_Inst, %RegTypeDW%, 1
+
+;[FiboConfig_ServiceInstall]
+;ServiceType     = 1
+;StartType       = 3
+;ErrorControl    = 1
+;ServiceBinary   = %12%\WUDFRd.sys
+;Addreg=FbConfigHWReg
+
+[FiboConfig_Inst]
+DisplayName   = %fbwwanConfig.Name%
+Description   = %fbwwanConfig.Desc%
+ErrorControl  = 1
+
+;////////////////// driver files part ///////////////////
+[DestinationDirs]
+ConfigFile_CopyFiles = 10,WWAN\Firmware\
+
+[SourceDisksNames]
+;2 = %DiskName%,"",,\config
+1 = %DiskName%,"",,
+
+[SourceDisksFiles]
+fbwwanConfig.flz = 1,,
+
+[ConfigFile_CopyFiles]
+fbwwanConfig.flz
+
+;------------------------------------------------
+;   #####    Add Components   #######
+;-----------------------------------------------
+;;;;[FiboEx_Inst.NT.Components]
+;;;;AddComponent = FBcExt-SWComponent,,Component_Inst
+
+;;;;[Component_Inst]
+
+;HP
+;;;;ComponentIDs = VEN_GEM&DEV_ESIM&{509E645E-918F-4F7F-93BC-28C8432F5139}
+
+;Generic
+;ComponentIDs = VEN_GEM&DEV_ESIM&{E653A514-CDCC-48F1-9776-FBF841D12F14}
+;////////////////// String  part ///////////////////
+[Strings]
+ManufacturerName      = "Fibocom Wireless Inc."
+FiboEx.ExtensionDesc  = "FiboConfigSrv Extension Description"
+DiskName = "FbWwanConfig Device disk"
+RegTypeStr            = 0x00000000
+RegTypeDW = 0x00010001
+fbwwanConfig.Name      = "FiboConfigSrv"
+fbwwanConfig.Desc      = "To support wwan specified setting from OEM."
+;;fbwwanConfig.ServiceName = "WUDFRd"
+;;fbwwanConfig.ServiceFlag = 0x00000008 
+
