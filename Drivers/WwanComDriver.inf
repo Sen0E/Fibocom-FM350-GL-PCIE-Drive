@@ -8,11 +8,11 @@ Class=Ports
 ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
 Provider=%ManufacturerName%
 CatalogFile=WwanComDriver.cat
-DriverVer =06/16/2022,0.6.200.233
+DriverVer=06/10/2024,0.6.200.330
 PnpLockDown=1
 
 [Manufacturer]
-%ManufacturerName%=Microsoft,NTamd64
+%ManufacturerName%=Microsoft,NTamd64,NTamd64.10.0...22000
 
 [Microsoft.NTamd64]
 %DeviceNameAT%=MyDevice_Install, PCI\VID_8087&PID_0B62
@@ -27,6 +27,19 @@ PnpLockDown=1
 %DeviceNameFIBOGNSS%=MyDevice_Install, PCI\VID_8087&PID_0B67
 %DeviceNameMETAMD%=MyDevice_Install, PCI\VID_8087&PID_0B68
 
+[Microsoft.NTamd64.10.0...22000]
+%DeviceNameAT%=MyDevice_Install_11, PCI\VID_8087&PID_0B62
+%DeviceNameCD%=MyDevice_Install_11, PCI\VID_8087&PID_0B61
+%DeviceNameMD%=MyDevice_Install_11, PCI\VID_8087&PID_0B60
+%DeviceNameADB%=MyDevice_Install_11, PCI\VID_8087&PID_0B63
+%DeviceNameMETASAP%=MyDevice_Install_11, PCI\VID_8087&PID_0B64
+%DeviceNameSAP%=MyDevice_Install_11, PCI\VID_8087&PID_0B5F
+%DeviceNameNPT%=MyDevice_Install_11, PCI\VID_8087&PID_0B65
+%DeviceNameFLS%=MyDevice_Install_11, PCI\VID_8087&PID_0B5D
+%DeviceNameNMEA%=MyDevice_Install_11, PCI\VID_8087&PID_0B66
+%DeviceNameFIBOGNSS%=MyDevice_Install_11, PCI\VID_8087&PID_0B67
+%DeviceNameMETAMD%=MyDevice_Install_11, PCI\VID_8087&PID_0B68
+
 [SourceDisksFiles]
 WwanComDriver.dll=1
 
@@ -40,7 +53,19 @@ CopyFiles=UMDriverCopy
 ;
 AddReg=LogSize_AddReg
 
+[MyDevice_Install_11.NT]
+Include=WUDFRD.inf
+Needs=WUDFRD.NT
+CopyFiles=UMDriverCopy
+;
+AddReg=LogSize_AddReg
+
 [MyDevice_Install.NT.hw]
+AddReg=PowerTransition_AddReg
+
+[MyDevice_Install_11.NT.hw]
+Include=WUDFRD.inf
+Needs=WUDFRD.NT.HW
 AddReg=PowerTransition_AddReg
 
 [PowerTransition_AddReg]
@@ -55,10 +80,24 @@ HKR,, "DefaultLogSize", %RegTypeDW%, 3
 [MyDevice_Install.NT.Services]
 AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall
 
+[MyDevice_Install_11.NT.Services]
+Include=WUDFRD.inf
+Needs=WUDFRD.NT.Services
+
 [MyDevice_Install.NT.CoInstallers]
 AddReg=CoInstallers_AddReg
 
+[MyDevice_Install_11.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+
 [MyDevice_Install.NT.Wdf]
+UmdfService=WwanComDriver,WwanComDriver_Install
+UmdfServiceOrder=WwanComDriver
+UmdfKernelModeClientPolicy  = AllowKernelModeClients
+UmdfFileObjectPolicy        = AllowNullAndUnknownFileObjects
+UmdfFsContextUsePolicy      = CannotUseFsContexts
+
+[MyDevice_Install_11.NT.Wdf]
 UmdfService=WwanComDriver,WwanComDriver_Install
 UmdfServiceOrder=WwanComDriver
 UmdfKernelModeClientPolicy  = AllowKernelModeClients
@@ -93,16 +132,16 @@ ManufacturerName="Fibocom Wireless Inc." ;TODO: Replace with your manufacturer n
 ClassName="Samples" ; TODO: edit ClassName
 DiskName = "WwanComDriver Installation Disk"
 WudfRdDisplayName="Windows Driver Foundation - User-mode Driver Framework Reflector"
-DeviceNameAT="Intel 5G Solution 5000 COM AT"
-DeviceNameCD="Intel 5G Solution 5000 COM Full RAM Dump"
-DeviceNameMD="Intel 5G Solution 5000 COM MD_Log"
-DeviceNameADB="Intel 5G Solution 5000 COM ADB"
-DeviceNameMETASAP="Intel 5G Solution 5000 COM META SAP"
-DeviceNameSAP="Intel 5G Solution 5000 COM SAP_Log"
-DeviceNameNPT="Intel 5G Solution 5000 COM NPT"
-DeviceNameFLS="Intel 5G Solution 5000 COM FLASH"
-DeviceNameNMEA="Intel 5G Solution 5000 COM NMEA"
-DeviceNameFIBOGNSS="Intel 5G Solution 5000 COM FIBO GNSS"
-DeviceNameMETAMD="Intel 5G Solution 5000 COM META MD"
+DeviceNameAT="5G Solution 5000 COM AT"
+DeviceNameCD="5G Solution 5000 COM Full RAM Dump"
+DeviceNameMD="5G Solution 5000 COM MD_Log"
+DeviceNameADB="5G Solution 5000 COM ADB"
+DeviceNameMETASAP="5G Solution 5000 COM META SAP"
+DeviceNameSAP="5G Solution 5000 COM SAP_Log"
+DeviceNameNPT="5G Solution 5000 COM NPT"
+DeviceNameFLS="5G Solution 5000 COM FLASH"
+DeviceNameNMEA="5G Solution 5000 COM NMEA"
+DeviceNameFIBOGNSS="5G Solution 5000 COM FIBO GNSS"
+DeviceNameMETAMD="5G Solution 5000 COM META MD"
 ;
 RegTypeDW   =   0x00010001

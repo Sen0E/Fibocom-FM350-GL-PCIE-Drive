@@ -1,0 +1,25 @@
+#include <windows.h>
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName",      "Sen0E"
+            VALUE "FileDescription",  "Intel(R) 5G Solution 5000 COM AT"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "Fibocom FM350 GL PCIE Drive COM AT"
+            VALUE "LegalCopyright",   "Copyright (C) 2025"
+            VALUE "OriginalFilename", "Fibocom FM350 GL PCIE Drive COM AT"
+            VALUE "ProductName",      "Intel(R) 5G Solution 5000 COM AT"
+            VALUE "ProductVersion",   "0.6.200.330"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200 
+    END
+END
