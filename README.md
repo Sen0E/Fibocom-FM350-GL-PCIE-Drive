@@ -1,5 +1,7 @@
 # 📡 Fibocom FM350 GL 5G Module Driver Solution
 
+🌐 [中文文档](README_ZH.md)
+
 ## 🚀 Project Overview
 
 This solution provides a complete fix for the driver disconnection issue of Fibocom FM350 GL 5G module on some laptops:
